@@ -11,6 +11,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      GITHUB_REF_NAME: $GITHUB_REF_NAME
+
     steps:
       - uses: actions/checkout@v4
       - name: Build the Docker image
@@ -28,5 +31,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ vars.DOCKERHUB_USERNAME }}/netbox-docker-plugins:latest,${{ vars.DOCKERHUB_USERNAME }}/netbox-docker-plugins:$GITHUB_REF_NAME
-
+          tags: ${{ vars.DOCKERHUB_USERNAME }}/netbox-docker-plugins:latest,${{ vars.DOCKERHUB_USERNAME }}/netbox-docker-plugins:${{ env.GITHUB_REF_NAME }}
