@@ -1,1 +1,2 @@
 netbox-inventory
+netbox-reorder-rack
